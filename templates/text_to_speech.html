@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Text-to-Speech Converter{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center; margin-bottom: 30px;">Text-to-Speech Converter</h1>
+    <form id="text-to-speech-form" action="{{ url_for('text_to_speech') }}" method="post" style="max-width: 400px; margin: 0 auto;">
+        <div style="margin-bottom: 20px;">
+            <label for="text-input" style="font-size: 18px;">Enter text:</label><br>
+            <input type="text" id="text-input" name="text" placeholder="Type your text here..." style="width: 100%; padding: 10px; font-size: 16px;" required>
+        </div>
+        <button type="submit" class="submit-btn" style="background-color: #4CAF50; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%;">Convert</button>
+    </form>
+</div>
+{% endblock %}

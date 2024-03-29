@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Text-to-Speech/Speech-to-Text Converter{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Text-to-Speech/Speech-to-Text Converter</h1>
+    <div>
+        <a href="{{ url_for('text_to_speech') }}" class="option">Text-to-Speech</a>
+        <a href="{{ url_for('speech_to_text') }}" class="option">Speech-to-Text</a>
+    </div>
+</div>
+{% endblock %}
