@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from text_to_speech import text_to_speech
+from text_to_speech import text_to_speech_exec
 
 app = Flask(__name__, template_folder='templates')
 
@@ -7,11 +7,11 @@ app = Flask(__name__, template_folder='templates')
 def index():
     return render_template('index.html')
 
-@app.route('/text-to-speech', methods=['GET', 'POST'])
-def text_to_speech_route():
+@app.route('/text_to_speech', methods=['GET', 'POST'])
+def text_to_speech():
     if request.method == 'POST':
         text = request.form['text']
-        text_to_speech(text)
+        text_to_speech_exec(text)
         return 'Text-to-speech conversion done!'
     return render_template('text_to_speech.html')
 
