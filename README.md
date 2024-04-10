@@ -12,10 +12,10 @@ A Flask application that provides text-to-speech and speech-to-text functionalit
 ## Installation
 
 1. Clone the repository:
-git clone https://github.com/aryasadawrate19/TTS-STT.git
+git clone https://github.com/aryasadawrate19/TextVoiceHub.git
 
 2. Navigate to the project directory:
-cd TTS-STT
+cd TextVoiceHub
 
 3. Create and activate a virtual environment (optional but recommended):
 python3 -m venv venv
