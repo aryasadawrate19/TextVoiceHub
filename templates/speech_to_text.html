@@ -1,0 +1,55 @@
+<!-- speech_to_text.html -->
+{% extends 'base.html' %}
+
+{% block title %}Speech-to-Text Converter{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center; margin-bottom: 30px;">Speech-to-Text Converter</h1>
+    <div style="max-width: 400px; margin: 0 auto;">
+        <p>Click the button below to start recording your speech:</p>
+        <button id="start-recording" class="record-button">Start Recording</button>
+        <p id="recognized-text" style="margin-top: 20px;"></p>
+    </div>
+</div>
+
+<style>
+    .record-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .record-button.recording {
+        background-color: #f44336; /* Red */
+    }
+</style>
+
+<script>
+    document.getElementById('start-recording').addEventListener('click', function() {
+        var button = document.getElementById('start-recording');
+        button.classList.toggle('recording');
+
+        if (button.classList.contains('recording')) {
+            button.textContent = 'Recording...';
+        } else {
+            button.textContent = 'Start Recording';
+        }
+
+        fetch('/speech-to-text', {
+            method: 'POST',
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('recognized-text').textContent = data;
+        })
+        .catch(error => {
+            document.getElementById('recognized-text').textContent = 'Error: ' + error;
+        });
+    });
+</script>
+{% endblock %}

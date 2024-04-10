@@ -1,5 +1,7 @@
+#app.py
 from flask import Flask, render_template, request
 from text_to_speech import text_to_speech_exec
+from speech_to_text import speech_to_text_exec
 
 app = Flask(__name__, template_folder='templates')
 
@@ -17,8 +19,13 @@ def text_to_speech():
 
 @app.route('/speech-to-text', methods=['GET', 'POST'])
 def speech_to_text():
-    # Speech-to-text functionality here
-    pass
+    if request.method == 'POST':
+        try:
+            text = speech_to_text_exec()
+            return f"Recognized text:{text}"
+        except Exception as e:
+            return f"Error:{str(e)}"
+    return render_template("speech_to_text.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
